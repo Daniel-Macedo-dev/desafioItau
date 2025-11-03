@@ -10,13 +10,15 @@ import java.util.List;
 public class TransacaoService {
     private final List<Transacao> transacoes = new ArrayList<>();
 
-    public void adicionarTransacao(Transacao transacao){
+    public void adicionarTransacao(Transacao transacao) {
         transacoes.add(transacao);
     }
-    public List<Transacao> listarTransacoes(){
+
+    public List<Transacao> listarTransacoes() {
         return transacoes;
     }
-    public void limparTransacoes(){
+
+    public void limparTransacoes() {
         transacoes.clear();
     }
 }
