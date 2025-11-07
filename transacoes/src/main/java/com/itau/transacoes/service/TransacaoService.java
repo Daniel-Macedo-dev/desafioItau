@@ -27,7 +27,7 @@ public class TransacaoService {
     }
 
     private void validarTransacao(Transacao transacao){
-        if(transacao.getValor() == null || transacao.getValor() <= 0){
+        if (transacao.getValor() <= 0) {
             throw new ValorNegativoException("O valor da transação deve ser positivo.");
         }
         if(transacao.getDataHora() == null){

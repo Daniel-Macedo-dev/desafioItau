@@ -20,7 +20,12 @@ public class TransacaoController {
 
     @PostMapping
     public ResponseEntity<Void> adicionarTransacao(@RequestBody TransacaoDTO transacaoDTO){
-        return transacaoService.adicionarTransacao(transacaoDTO);
+        Transacao transacao = new Transacao();
+        transacao.setValor(transacaoDTO.getValor());
+        transacao.setDataHora(transacaoDTO.getDataHora());
+
+        transacaoService.adicionarTransacao(transacao);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/estatistica")
