@@ -12,6 +12,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Void> handleTransacaoInvalida(TransacaoInvalidaException exception){
         return ResponseEntity.unprocessableEntity().build();
     }
+    @ExceptionHandler(ValorNegativoException.class)
+    public ResponseEntity<Void> handleValorNegativo(ValorNegativoException exception){
+        return ResponseEntity.unprocessableEntity().build();
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Void> handleGeneric(Exception exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
