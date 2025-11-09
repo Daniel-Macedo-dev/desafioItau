@@ -24,7 +24,6 @@ public class TransacaoService {
 
     public void limparTransacoes() {
         transacoes.clear();
-
     }
 
     private void validarTransacao(Transacao transacao){
