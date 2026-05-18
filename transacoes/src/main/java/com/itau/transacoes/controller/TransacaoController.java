@@ -2,6 +2,7 @@ package com.itau.transacoes.controller;
 
 import com.itau.transacoes.dto.EstatisticaDTO;
 import com.itau.transacoes.dto.TransacaoDTO;
+import com.itau.transacoes.exceptions.TransacaoInvalidaException;
 import com.itau.transacoes.infrastructure.entities.Transacao;
 import com.itau.transacoes.service.EstatisticaService;
 import com.itau.transacoes.service.TransacaoService;
@@ -20,6 +21,9 @@ public class TransacaoController {
 
     @PostMapping("/transacao")
     public ResponseEntity<Void> adicionarTransacao(@RequestBody TransacaoDTO transacaoDTO){
+        if (transacaoDTO.getValor() == null) {
+            throw new TransacaoInvalidaException("O valor da transação é obrigatório");
+        }
         Transacao transacao = new Transacao();
         transacao.setValor(transacaoDTO.getValor());
         transacao.setDataHora(transacaoDTO.getDataHora());
