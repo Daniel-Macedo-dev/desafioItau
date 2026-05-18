@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EstatisticaDTO {
-    private double soma;
-    private double media;
-    private double maximo;
-    private double minimo;
-    private long quantidade;
+    private double sum;
+    private double avg;
+    private double max;
+    private double min;
+    private long count;
 }
