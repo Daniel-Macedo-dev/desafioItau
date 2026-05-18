@@ -6,12 +6,12 @@ import com.itau.transacoes.infrastructure.entities.Transacao;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 public class TransacaoService {
-    private final List<Transacao> transacoes = new ArrayList<>();
+    private final List<Transacao> transacoes = new CopyOnWriteArrayList<>();
 
     public void adicionarTransacao(Transacao transacao) {
         validarTransacao(transacao);
@@ -19,7 +19,7 @@ public class TransacaoService {
     }
 
     public List<Transacao> listarTransacoes() {
-        return transacoes;
+        return List.copyOf(transacoes);
     }
 
     public void limparTransacoes() {
