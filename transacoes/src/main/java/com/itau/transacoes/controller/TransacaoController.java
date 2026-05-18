@@ -6,26 +6,26 @@ import com.itau.transacoes.infrastructure.entities.Transacao;
 import com.itau.transacoes.service.EstatisticaService;
 import com.itau.transacoes.service.TransacaoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/transacao")
 @RequiredArgsConstructor
 public class TransacaoController {
     private final EstatisticaService estatisticaService;
     private final TransacaoService transacaoService;
 
-    @PostMapping
+    @PostMapping("/transacao")
     public ResponseEntity<Void> adicionarTransacao(@RequestBody TransacaoDTO transacaoDTO){
         Transacao transacao = new Transacao();
         transacao.setValor(transacaoDTO.getValor());
         transacao.setDataHora(transacaoDTO.getDataHora());
 
         transacaoService.adicionarTransacao(transacao);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping("/estatistica")
@@ -35,7 +35,7 @@ public class TransacaoController {
         return ResponseEntity.ok(estatisticas);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/transacao")
     public ResponseEntity<Void> limparTransacoes(){
         transacaoService.limparTransacoes();
         return ResponseEntity.ok().build();
