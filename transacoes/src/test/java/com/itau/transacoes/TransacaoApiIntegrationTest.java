@@ -189,7 +189,7 @@ class TransacaoApiIntegrationTest {
     }
 
     @Test
-    void getEstatistica_multipasTransacoesRecentes_retornaAgregacoesCorretas() throws Exception {
+    void getEstatistica_multiplasTransacoesRecentes_retornaAgregacoesCorretas() throws Exception {
         mockMvc.perform(post("/transacao")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(transacaoJson(100.0, OffsetDateTime.now().minusSeconds(5))));
